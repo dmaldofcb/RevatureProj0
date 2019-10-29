@@ -7,10 +7,8 @@ namespace BankingApplication
 {
     static class UserLoginRegistration
     {
-        private static Dictionary<(string,string), Users> userInformation = new Dictionary<(string, string), Users>();
-
-        //DUMMY CONSTRUCTOR to Test
-        
+        //Keep track of all the user login information 
+        private static Dictionary<(string,string), Users> userInformation = new Dictionary<(string, string), Users>();        
 
         public static bool ValidateUser(string userName,string password)
         {

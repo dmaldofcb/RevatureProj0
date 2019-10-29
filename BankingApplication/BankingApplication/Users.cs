@@ -13,23 +13,24 @@ namespace BankingApplication
         private string password;
         private string address;
 
-        public string FirstName { get => firstName; set => firstName = value; }
-        public string DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
-        public string LastName { get => lastName; set => lastName = value; }
-        public string Username { get => username; set => username = value; }
-        public string Password { get => password; set => password = value; }
-        public string Address { get => address; set => address = value; }
+        public string FirstName { get => firstName;}
+        public string DateOfBirth { get => dateOfBirth;}
+        public string LastName { get => lastName; }
+        public string Username { get => username; }
+        public string Password { get => password; }
+        public string Address { get => address;}
 
         public Users(string firstName, string lastName, string dateOfBirth, string username, string password, string address)
         {
-            FirstName = firstName;
-            DateOfBirth = dateOfBirth;
-            LastName = lastName;
-            Username = username;
-            Password = password;
-            Address = address;
+            this.firstName = firstName;
+            this.dateOfBirth = dateOfBirth;
+            this.lastName = lastName;
+            this.username = username;
+            this.password = password;
+            this.address = address;
         }
 
+        //Test user Creation
         public static void PrintUser(Users newUser)
         {
             Console.WriteLine("Creating User");
