@@ -99,14 +99,28 @@ namespace BankingApplication
             {
                 if (acctDest.Deposit(amount))
                 {
-                    Transaction last = accountTransactions[accountTransactions.Count-1];
-                    last.TransactionType = "Transfer";
-                    accountTransactions[accountTransactions.Count - 1] = last;
+                    Console.WriteLine("List LENGTH="+acctDest.accountTransactions.Count);
+                    if (acctDest.accountTransactions.Count == 0) //no transaction to change from deposit to transfer
+                    {
+                        acctDest.accountTransactions.Add(new Transaction("Transfer", amount, DateTime.Today));
+                    }
+                    else
+                    {
+                       // acctDest.accountTransactions.RemoveAt(accountTransactions.Count - 1); //remove deposit transaction
+
+                        Transaction last = acctDest.accountTransactions[acctDest.accountTransactions.Count - 1];
+                        last.TransactionType = "Transfer";
+                        acctDest.accountTransactions[acctDest.accountTransactions.Count - 1] = last;
+
+                    }
                     Console.WriteLine($"Succesfully Transferred {amount:c} from {this.AccountName.ToUpper()}:{this.AccountNumber} --> {acctDest.AccountName.ToUpper()}:{acctDest.AccountNumber}");
+                    return;
                 }
+                Balance += amount;//add the amount withdrawn back if transfer fails
+                accountTransactions.RemoveAt(accountTransactions.Count - 1);
+                Console.WriteLine("Error: Failed to Complete Transfer");
                 return;
             }
-            Console.WriteLine("Error: Failed to Complete Transfer");
         }
 
         //public virtual void TransferBetweenAccounts(LoanAccount acctDest, decimal amount)
@@ -116,11 +130,21 @@ namespace BankingApplication
 
         public void printAccountInfo()
         {
-            Console.WriteLine("Account Type: "+ AccountName);
-            Console.WriteLine("Account Number: "+ accountNumber);
-            Console.WriteLine($"Balance: { Balance :c} ");
-            Console.WriteLine($"Interest Rate: {InterestRate:p}");
-            Console.WriteLine("Date Account Created: " + dateCreated.ToString());
+            Console.WriteLine($"*-------------{AccountName} Information-------------*");
+            Console.WriteLine("Account Type: ".PadLeft(25)+ AccountName);
+            Console.WriteLine("Account Number: ".PadLeft(25) + accountNumber);
+            Console.WriteLine("Balance: ".PadLeft(25) + Balance.ToString("c"));
+            Console.WriteLine("Interest Rate: ".PadLeft(25) + InterestRate.ToString("p"));
+            Console.WriteLine("Date Account Created: ".PadLeft(25) + dateCreated.ToString("MM/dd/yyyy"));
+            Console.WriteLine("Account Status: ".PadLeft(25) + (IsOpen ? "Open" : "Closed"));
+            Console.WriteLine("*-----------------------------------------------------*");
+
+        }
+
+        public override string ToString()
+        {
+            string str = $"{AccountName} Account Number: {AccountNumber} -> Balance={Balance.ToString("c")} -> Account Status: " + (IsOpen ? "Open" : "Closed") ;
+            return str;
         }
 
         protected bool IsBalanceEmpty()

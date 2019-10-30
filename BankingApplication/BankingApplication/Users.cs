@@ -8,19 +8,19 @@ namespace BankingApplication
     {
         private string firstName;
         private string lastName;
-        private string dateOfBirth;
+        private DateTime dateOfBirth;
         private string username;
         private string password;
         private string address;
 
         public string FirstName { get => firstName;}
-        public string DateOfBirth { get => dateOfBirth;}
+        public DateTime DateOfBirth { get => dateOfBirth;}
         public string LastName { get => lastName; }
         public string Username { get => username; }
         public string Password { get => password; }
         public string Address { get => address;}
 
-        public Users(string firstName, string lastName, string dateOfBirth, string username, string password, string address)
+        public Users(string firstName, string lastName, DateTime dateOfBirth, string username, string password, string address)
         {
             this.firstName = firstName;
             this.dateOfBirth = dateOfBirth;
@@ -33,12 +33,13 @@ namespace BankingApplication
         //Test user Creation
         public static void PrintUser(Users newUser)
         {
-            Console.WriteLine("Creating User");
-            Console.WriteLine("First Name: "+ newUser.FirstName);
-            Console.WriteLine("Last Name: "+ newUser.LastName);
-            Console.WriteLine("Username: "+ newUser.Username);
-            Console.WriteLine("Password: "+ newUser.Password);
-            Console.WriteLine("Address: "+ newUser.Address);
+            Console.WriteLine("*-------------------------User Information---------------------------*");
+            Console.WriteLine(String.Format("{0,-10} {1,15}", "First Name: ".PadLeft(30), newUser.FirstName));
+            Console.WriteLine(String.Format("{0,-10} {1,15}", "Last Name:  ".PadLeft(30), newUser.LastName));
+            Console.WriteLine(String.Format("{0,-10} {1,15}", "Username:   ".PadLeft(30), newUser.Username));
+            Console.WriteLine(String.Format("{0,-10} {1,15}", "Password:   ".PadLeft(30), newUser.Password));
+            Console.WriteLine(String.Format("{0,-10} {1,15}", "DOB:        ".PadLeft(30), newUser.DateOfBirth.ToString("MM/dd/yyyy")));
+            
 
         }
 

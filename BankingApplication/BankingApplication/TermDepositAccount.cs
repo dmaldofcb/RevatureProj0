@@ -8,11 +8,11 @@ namespace BankingApplication
     {
         private readonly DateTime maturityDate;
         private bool depositedFlag = false; //setup flag
-        public TermDepositAccount (int year, int month, int day) : base() //define a specific date for maturity
-        {
-            AccountName = "Term Deposit Account";
-            maturityDate = new DateTime(year,month,day);
-        }
+        //public TermDepositAccount (int year, int month, int day) : base() //define a specific date for maturity
+        //{
+        //    AccountName = "Term Deposit Account";
+        //    maturityDate = new DateTime(year,month,day);
+        //}
 
         public TermDepositAccount(int years) : base() //define how many years from current date you want maturity date to end
         {
