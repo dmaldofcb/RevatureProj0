@@ -52,7 +52,8 @@ namespace BankingApplication
                     currOverDraft = withdrawAmount - Balance;
                     Overdraft = currOverDraft; //Initialize Overdraft amount for first time you overdraft
                     CalculateOverdraftInterest(currOverDraft);
-                    accountTransactions.Add(new Transaction("Withdraw", Balance * -1, DateTime.Today)); //also add to transaction the withdraw of all the balance
+                    if(Balance != 0)
+                        accountTransactions.Add(new Transaction("Withdraw", Balance * -1, DateTime.Now)); //also add to transaction the withdraw of all the balance
 
                 }
                 else //Account in negative already and user overdrafts again
@@ -62,11 +63,11 @@ namespace BankingApplication
                     CalculateOverdraftInterest(currOverDraft);
                 }
                 Console.WriteLine($"**An overdraft of {currOverDraft:c} was charged**");
-                accountTransactions.Add(new Transaction("Overdraft",currOverDraft*-1,DateTime.Today));
+                accountTransactions.Add(new Transaction("Overdraft",currOverDraft*-1,DateTime.Now));
                 Balance = Overdraft*-1;//display a negative balance 
                 return true;
             }
-            accountTransactions.Add(new Transaction("Withdraw",withdrawAmount*-1,DateTime.Today)); //adding transaction
+            accountTransactions.Add(new Transaction("Withdraw",withdrawAmount*-1,DateTime.Now)); //adding transaction
             Balance -= withdrawAmount;
             return true;
         }

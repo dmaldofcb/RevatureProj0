@@ -41,7 +41,7 @@ namespace BankingApplication
                 Console.WriteLine($"Error: payment is more the Loan owed {Balance:c} Payment={depositAmount:c}");
                 return false;
             }
-            accountTransactions.Add(new Transaction("Payment", depositAmount, DateTime.Today)); //adding payment
+            accountTransactions.Add(new Transaction("Payment", depositAmount, DateTime.Now)); //adding payment
 
             Balance -= depositAmount;
             return true;

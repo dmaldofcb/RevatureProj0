@@ -26,7 +26,7 @@ namespace BankingApplication
 
         public override string ToString()
         {
-            string str = String.Format("|{0,-16}|{1,-10}|{2,-10}|", TransactionType, Amount.ToString("c"), DateTransaction.ToString("MM/dd/yyyy"));
+            string str = String.Format("|{0,-16}|{1,-10}|{2,-10}|", TransactionType, Amount.ToString("c"), DateTransaction.ToString("MM/dd/yyyy - H:mm:ss"));
             return str;
         }
     }

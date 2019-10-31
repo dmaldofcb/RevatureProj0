@@ -54,7 +54,7 @@ namespace BankingApplication
       
             Balance -= withdrawAmount;
 
-            accountTransactions.Add(new Transaction("Withdraw",withdrawAmount*-1,DateTime.Today));
+            accountTransactions.Add(new Transaction("Withdraw",withdrawAmount*-1,DateTime.Now));
             return true;
         }
 
@@ -71,7 +71,7 @@ namespace BankingApplication
                 return false;
             }
             Balance += depositAmount;
-            accountTransactions.Add(new Transaction("Deposit", depositAmount, DateTime.Today));
+            accountTransactions.Add(new Transaction("Deposit", depositAmount, DateTime.Now));
 
             return true;
         }
@@ -99,10 +99,10 @@ namespace BankingApplication
             {
                 if (acctDest.Deposit(amount))
                 {
-                    Console.WriteLine("List LENGTH="+acctDest.accountTransactions.Count);
+                    //Console.WriteLine("List LENGTH="+acctDest.accountTransactions.Count);
                     if (acctDest.accountTransactions.Count == 0) //no transaction to change from deposit to transfer
                     {
-                        acctDest.accountTransactions.Add(new Transaction("Transfer", amount, DateTime.Today));
+                        acctDest.accountTransactions.Add(new Transaction("Transfer", amount, DateTime.Now));
                     }
                     else
                     {

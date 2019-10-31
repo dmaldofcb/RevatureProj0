@@ -19,7 +19,7 @@ namespace BankingApplication
                 return true;
             }
 
-            Console.WriteLine("**Could not find user**");
+            //Console.WriteLine("**Could not find user**");
 
             return false;
         }
